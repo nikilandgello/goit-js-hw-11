@@ -1,4 +1,5 @@
 import { IZI_MESSEGES, showMessage } from '../main.js';
+const loader = document.querySelector('.loader');
 
 const KEY_API = '47345355-bb5adb35ee772e90f4db69f75';
 
@@ -23,6 +24,7 @@ export function getImages(qValue) {
         })
         .catch((error) => {
             console.error('Error:', error.message);
+            loader.style.display = 'none'
             return;
         });
 };

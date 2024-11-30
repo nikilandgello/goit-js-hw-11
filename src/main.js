@@ -7,8 +7,9 @@ import { renderGallery } from './js/render-functions';
 const form = document.querySelector('.search-form');
 const inputSearch = document.querySelector('[name="search"]');
 const gallery = document.querySelector('.gallery');
-const spanLoader = document.createElement('span');
+const loader = document.querySelector('.loader');
 
+loader.style.display = 'none'
 
 form.addEventListener('input', savetoLocalStorage);
 form.addEventListener('submit', searchImages);
@@ -35,12 +36,14 @@ function savetoLocalStorage(e) {
 //get images
 function searchImages(e) {
     e.preventDefault();
-    loader();
+
     gallery.innerHTML = '';
+    loader.style.display = 'block';
 
     const input = e.target.elements.search;
 
     if (!input.value.trim()) {
+        loader.style.display = 'none';
         showMessage(IZI_MESSEGES.info.type, IZI_MESSEGES.info.message);
         gallery.innerHTML = '';
         return;
@@ -49,17 +52,21 @@ function searchImages(e) {
     getImages(input.value.trim())
         .then((data) => {
             if (!data.hits.length) {
+                loader.style.display = 'none';
+
                 showMessage(IZI_MESSEGES.warning.type, IZI_MESSEGES.warning.message);
                 gallery.innerHTML = '';
                 return;
             }
 
+            loader.style.display = 'none';
             showMessage(IZI_MESSEGES.success.type, IZI_MESSEGES.success.message);
-            
-            renderGallery(data.hits, gallery)
+
+            renderGallery(data.hits, gallery);
             return;
         })
         .finally(() => {
+            loader.style.display = 'none';
             localStorage.removeItem(localKey);
             formData.search = '';
 
@@ -69,12 +76,6 @@ function searchImages(e) {
     
     return;
 };
-
-//loader
-function loader() {
-    spanLoader.classList.add('loader');
-    gallery.append(spanLoader);
-}
 
 // iziToast message
 const IZI_MESSEGES = {
