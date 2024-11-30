@@ -27,25 +27,25 @@ function createMarkup(arr) {
                     class = 'gallery-image'
                     src = '${webformatURL}'
                     alt =  '${tags}'>
+                <ul class = 'description-list'>
+                    <li class = 'description-item'>
+                        <h3>Likes</h3>
+                        <p>${likes}</p>
+                    </li>
+                    <li class = 'description-item'>
+                        <h3>Views</h3>
+                        <p>${views}</p>
+                    </li>
+                    <li class = 'description-item'>
+                        <h3>Comments</h3>
+                        <p>${comments}</p>
+                    </li>
+                    <li class = 'description-item'>
+                        <h3>Downloads</h3>
+                        <p>${downloads}</p>
+                    </li>
+                </ul>
             </a>
-            <ul class = 'description-list'>
-                <li class = 'description-item'>
-                    <h3>Likes</h3>
-                    <p>${likes}</p>
-                </li>
-                <li class = 'description-item'>
-                    <h3>Views</h3>
-                    <p>${views}</p>
-                </li>
-                <li class = 'description-item'>
-                    <h3>Comments</h3>
-                    <p>${comments}</p>
-                </li>
-                <li class = 'description-item'>
-                    <h3>Downloads</h3>
-                    <p>${downloads}</p>
-                </li>
-            </ul>
         </li>`
         }).join('')
 };
