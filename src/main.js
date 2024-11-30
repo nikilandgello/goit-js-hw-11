@@ -36,6 +36,7 @@ function savetoLocalStorage(e) {
 function searchImages(e) {
     e.preventDefault();
     loader();
+    gallery.innerHTML = '';
 
     const input = e.target.elements.search;
 

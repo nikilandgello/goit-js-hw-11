@@ -1,7 +1,18 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-export function createMarkup(arr) {
+const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+});
+    
+export function renderGallery(data, tagToInsert) {
+    tagToInsert.innerHTML = createMarkup(data);
+
+    lightbox.refresh();
+};
+
+function createMarkup(arr) {
     return arr.map(({
         webformatURL,
         largeImageURL,
@@ -37,15 +48,4 @@ export function createMarkup(arr) {
             </ul>
         </li>`
         }).join('')
-};
-
-export function renderGallery(data, tagToInsert) {
-    tagToInsert.innerHTML = createMarkup(data);
-
-    const lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-    });
-
-    lightbox.refresh();
 };
