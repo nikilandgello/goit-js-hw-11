@@ -4,24 +4,24 @@ import{S as y,i as h}from"./assets/vendor-5ObWk2rO.js";(function(){const r=docum
                     class = 'gallery-image'
                     src = '${r}'
                     alt =  '${l}'>
+                <ul class = 'description-list'>
+                    <li class = 'description-item'>
+                        <h3>Likes</h3>
+                        <p>${e}</p>
+                    </li>
+                    <li class = 'description-item'>
+                        <h3>Views</h3>
+                        <p>${o}</p>
+                    </li>
+                    <li class = 'description-item'>
+                        <h3>Comments</h3>
+                        <p>${i}</p>
+                    </li>
+                    <li class = 'description-item'>
+                        <h3>Downloads</h3>
+                        <p>${d}</p>
+                    </li>
+                </ul>
             </a>
-            <ul class = 'description-list'>
-                <li class = 'description-item'>
-                    <h3>Likes</h3>
-                    <p>${e}</p>
-                </li>
-                <li class = 'description-item'>
-                    <h3>Views</h3>
-                    <p>${o}</p>
-                </li>
-                <li class = 'description-item'>
-                    <h3>Comments</h3>
-                    <p>${i}</p>
-                </li>
-                <li class = 'description-item'>
-                    <h3>Downloads</h3>
-                    <p>${d}</p>
-                </li>
-            </ul>
         </li>`).join("")}const g=document.querySelector(".search-form"),E=document.querySelector('[name="search"]'),c=document.querySelector(".gallery"),a=document.querySelector(".loader");a.style.display="none";g.addEventListener("input",I);g.addEventListener("submit",$);const f="input-name-image",p=JSON.parse(localStorage.getItem(f)),m={search:""};p&&(E.value=p.search,m.search=p.search);function I(t){m.search=t.target.value.trim(),localStorage.setItem(f,JSON.stringify(m))}function $(t){t.preventDefault(),c.innerHTML="",a.style.display="block";const r=t.target.elements.search;if(!r.value.trim()){a.style.display="none",u(n.info.type,n.info.message),c.innerHTML="";return}w(r.value.trim()).then(s=>{if(!s.hits.length){a.style.display="none",u(n.warning.type,n.warning.message),c.innerHTML="";return}a.style.display="none",u(n.success.type,n.success.message),v(s.hits,c)}).finally(()=>{a.style.display="none",localStorage.removeItem(f),m.search="",g.reset()})}const n={success:{type:"success",message:"Request completed successfully"},info:{type:"info",message:"The field must be filled"},warning:{type:"warning",message:"Sorry, there are no images matching your search query. Please try again!"},error:{type:"error",message:"Something went wrong. Please try again later!"}};function u(t,r){const s={success:"rgb(0, 255, 128, 0.7)",info:"rgb(76, 153, 255, 0.7)",warning:"rgb(255, 193, 7, 0.7)",error:"rgb(255, 76, 76, 0.7)"};h.show({message:r,messageColor:"white",position:"topRight",backgroundColor:s[t]})}
 //# sourceMappingURL=index.js.map
